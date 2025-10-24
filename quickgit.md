@@ -16,7 +16,7 @@ git pull origin main          # Get everyone's latest updates
 
 # Create New Branch 
 git checkout -b feature/your-feature-name
-# Examples: feature/login, fix/navbar, update/readme
+- Examples: feature/login, fix/navbar, update/readme
 
 # See what's changed
 git status 
@@ -26,7 +26,7 @@ git add .                     # Or specific files
 
 # Commit changes (saved locally only)
 git commit -m "Descriptive message"  
-# Can commit multiple times before pushing
+- Can commit multiple times before pushing
 
 # Push ur branch to GitHub (upload commits)
 git push origin feature/your-feature-name  
