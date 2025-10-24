@@ -32,11 +32,11 @@ git commit -m "Descriptive message"
 git push origin feature/your-feature-name  
 
 # Create a Pull request before merging to main 
-1. Go to GitHub repository
-2. Click "Pull requests" → "New pull request"
-3. Select your branch to merge into main
-4. Add description of what you did
-5. Tag teammates for review (@username)
+Go to GitHub repository
+Click "Pull requests" → "New pull request"
+Select your branch to merge into main
+Add description of what you did
+Tag teammates for review (@username)
 
 # After PR approved & merged
 git checkout main             # Switch back to main
