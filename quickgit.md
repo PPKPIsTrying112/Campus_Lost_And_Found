@@ -53,11 +53,11 @@ git push origin feature/your-feature-name
 ```
 
 #### Create a Pull request before merging to main 
-Go to GitHub repository
-Click "Pull requests" → "New pull request"
-Select your branch to merge into main
-Add description of what you did
-Tag teammates for review (@username)
+- Go to GitHub repository
+- Click "Pull requests" → "New pull request"
+- Select your branch to merge into main
+- Add description of what you did
+- Tag teammates for review (@username)
 
 #### After PR approved & merged
 ```bash
@@ -86,7 +86,7 @@ git merge main                # Brings main's changes into your branch
 - Write CLEAR commit messages
 
 #### If you see CONFLICT when pulling
-Open the conflicted files
-Look for <<<<<<< and >>>>>>> markers  
-Keep the code you want, delete the markers
-Then: git add . → git commit -m "Resolve conflict" → git push
+- Open the conflicted files
+- Look for <<<<<<< and >>>>>>> markers  
+- Keep the code you want, delete the markers
+- Then: git add . → git commit -m "Resolve conflict" → git push
