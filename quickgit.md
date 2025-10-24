@@ -1,14 +1,14 @@
 
------ One Time Setup Only ------
+### One Time Setup Only 
 
 #### 1. Clone the repo locally 
 git clone https://github.com/PPKPIsIrying112/Campus_Lost_And_Found.git
 
-2. Go into directory 
+#### 2. Go into directory 
 cd Campus_Lost_and_Found 
 - Come back to this directory everytime you want to work on this repo
 
------ Usual Stuff ------
+### Usual Stuff 
 
 ##### Get Latest Changes from Main branch
 git checkout main             # Switch to main first
