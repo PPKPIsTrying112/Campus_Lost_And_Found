@@ -24,8 +24,8 @@ Please have this installed on ur computer
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/PLACEHOLDER
-cd my-post-app
+git clone https://github.com/PPKPIsTrying112/Campus_Lost_And_Found.git
+cd Campus_Lost_And_Found
 ```
 
 2. **Install ALL dependencies** (one command per folder)
