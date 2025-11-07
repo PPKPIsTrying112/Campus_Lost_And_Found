@@ -1,10 +1,26 @@
 ## Setup Instructions
 
-### Prerequisites
-- Node.js (v16 or higher)
-- npm (comes with Node.js)
+## Prerequisites
 
-### Installation
+Please have this installed on ur computer
+- **Node.js** (v16 or higher) - [Download](https://nodejs.org/)
+- **npm** (comes with Node.js)
+
+## Stack Used
+
+### Frontend
+- React 18
+- Vite (build tool)
+
+### Backend
+- Express.js (web framework)
+- better-sqlite3 (database)
+- CORS (middleware)
+
+### Database
+- SQLite
+
+### How to Install
 
 1. **Clone the repository**
 ```bash
