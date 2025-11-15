@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import PostPage from "./pages/PostPage";
+import Homepage from './pages/Homepage';
+
 
 function App() {
   const [user, setUser] = useState(null); // track logged-in user
@@ -14,9 +16,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Home page → PostPage, only if logged in */}
+        {/* Homepage is accessible to everyone */}
+        <Route path="/" element={<Homepage />} />
+        
+        {/*PostPage, only if logged in */}
         <Route
-          path="/"
+          path="/postpage"
           element={user ? <PostPage user={user} /> : <Navigate to="/login" />}
         />
 
