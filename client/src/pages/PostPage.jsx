@@ -6,11 +6,13 @@ import '../App.css';
 function PostPage() {
   const [posts, setPosts] = useState([]);
 
+  // useEffect(): When PostPage appears on screen, run this
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, []); // [] run only once when component loads 
 
   const fetchPosts = async () => {
+    // Gettin' the posts 
     const response = await fetch('/api/posts');
     const data = await response.json();
     setPosts(data);
