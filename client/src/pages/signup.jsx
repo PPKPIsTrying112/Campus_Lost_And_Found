@@ -1,7 +1,10 @@
+// src/pages/Signup.jsx
 import { useState } from "react";
 import { apiPost } from "../api";
+import { useAuth } from "../contexts/AuthContext.jsx";
 
-function Signup({ onLogin }) {
+function Signup() {
+  const { login } = useAuth();
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [msg, setMsg] = useState("");
 
@@ -13,18 +16,33 @@ function Signup({ onLogin }) {
     const res = await apiPost("/auth/signup", form);
     setMsg(res.message);
 
-    if (res.success) {
-      onLogin(res.user || { email: form.email, name: form.name }); // auto login
-    }
+    if (res.success) login(res.user || { name: form.name, email: form.email });
   };
 
   return (
     <div>
       <h1>Create Account</h1>
       <form onSubmit={handleSubmit}>
-        <input name="name" placeholder="Name" onChange={handleChange} required />
-        <input name="email" type="email" placeholder="Email" onChange={handleChange} required />
-        <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
+        <input
+          name="name"
+          placeholder="Name"
+          onChange={handleChange}
+          required
+        />
+        <input
+          name="email"
+          type="email"
+          placeholder="Email"
+          onChange={handleChange}
+          required
+        />
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          onChange={handleChange}
+          required
+        />
         <button type="submit">Sign Up</button>
       </form>
       <p>{msg}</p>
