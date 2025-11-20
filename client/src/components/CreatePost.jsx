@@ -16,6 +16,7 @@ function CreatePost({ onPostCreated }) {
       body: JSON.stringify({ title, content }),
     });
 
+    // Clearing the textboxes
     setTitle('');
     setContent('');
     

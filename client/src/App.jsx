@@ -5,6 +5,7 @@ import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import PostPage from "./pages/PostPage";
+import FoundItemsPage from './pages/FoundItemsPage';
 
 function App() {
   const { user } = useAuth();
@@ -14,7 +15,10 @@ function App() {
       <Routes>
         {/* Homepage accessible to everyone */}
         <Route path="/" element={<Homepage />} />
-
+        
+        {/* Found items page */}
+        <Route path="/found-items" element={<FoundItemsPage />} />
+        
         {/* PostPage only for logged-in users */}
         <Route
           path="/postpage"
@@ -24,13 +28,13 @@ function App() {
         {/* Login */}
         <Route
           path="/login"
-          element={user ? <Navigate to="/postpage" /> : <Login />}
+          element={user ? <Navigate to="/found-items" /> : <Login />}
         />
 
         {/* Signup */}
         <Route
           path="/signup"
-          element={user ? <Navigate to="/postpage" /> : <Signup />}
+          element={user ? <Navigate to="/found-items" /> : <Signup />}
         />
       </Routes>
     </Router>

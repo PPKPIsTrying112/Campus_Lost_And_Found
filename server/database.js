@@ -21,4 +21,22 @@ db.exec(`
   )
 `);
 
+// Found items table
+db.exec(`
+  CREATE TABLE IF NOT EXISTS found_items (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    itemTitle TEXT NOT NULL,
+    description TEXT NOT NULL,
+    category TEXT NOT NULL,
+    locationFound TEXT NOT NULL,
+    dateFound DATE NOT NULL,
+    timeFound TIME,
+    photo TEXT,
+    securityQuestion1 TEXT NOT NULL,
+    securityQuestion2 TEXT,
+    securityQuestion3 TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  )
+`);
+
 module.exports = db;
