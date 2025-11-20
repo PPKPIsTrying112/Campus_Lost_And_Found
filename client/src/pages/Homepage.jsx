@@ -31,6 +31,7 @@ function Homepage() {
         <div style={{ display: "flex", gap: "1rem" }}>
           <button onClick={() => navigate("/login")}>Login</button>
           <button onClick={() => navigate("/signup")}>Sign Up</button>
+          <button onClick={() => navigate("/found-items")}>Found Items</button>
         </div>
 
         {msg && <p>{msg}</p>}
