@@ -44,7 +44,7 @@ function CreateFoundItem({ onItemCreated }) {
 
   return (
     <div className="form-container">
-      <h2>Post a Found Item</h2>
+      <h2>Post a Found Item: </h2>
       <form onSubmit={handleSubmit}>
         <input 
             type ="text" 
@@ -60,52 +60,61 @@ function CreateFoundItem({ onItemCreated }) {
             required
         />
         <select value={category} onChange={(e) => setCategory(e.target.value)} required>
-            <option value="">Select a category</option>
+            <option value="">Select a category: </option>
             <option value="Wallet">Wallet</option>
             <option value="Phone">Phone</option>
             <option value="Keys">Keys</option>
             <option value="Other">Other</option>
         </select>
+        <h2>Location you found: </h2>
         <input
             type="text"
-            placeholder="e.g., Main Library - Near Entrance"
+            placeholder="e.g. Main Library"
             value={locationFound}
             onChange={(e) => setLocationFound(e.target.value)}
             required
         />
+        <h2>Date you found: </h2>
+
         <input
             type="date"
             value={dateFound}
             onChange={(e) => setDateFound(e.target.value)}
             required
         />
+
+        <h2>Time you found: </h2>
         <input
             type="time"
             value={timeFound}
             onChange={(e) => setTimeFound(e.target.value)}
         />
+
+        <h2>Please upload an image of the found item: </h2>
         <input
             type="file"
             onChange={(e) => setPhoto(e.target.files[0])}
             accept="image/*"
             required
         />
+
+        <h2>Please enter security questions: </h2>
         <input
             type="text"
-            placeholder="Enter a security question..."
+            placeholder="Enter security question 1"
             value={securityQuestion1}
             onChange={(e) => setSecurityQuestion1(e.target.value)}
             required
         />
         <input
             type="text"
-            placeholder="Enter a security question..."
+            placeholder="Enter security question 2"
             value={securityQuestion2}
             onChange={(e) => setSecurityQuestion2(e.target.value)}
         />
         <input
             type="text"
-            placeholder="Enter a security question..."
+            placeholder="Enter a security question 3"
             value={securityQuestion3}
             onChange={(e) => setSecurityQuestion3(e.target.value)}
         />
