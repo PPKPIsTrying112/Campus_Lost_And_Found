@@ -36,6 +36,9 @@ function FoundItemsList({ foundItems }) {
             {/* Description */}
             <p className="item-description">{item.description}</p>
             
+            {/* Description */}
+            <p className="item-category">{item.category}</p>
+
             {/* Location */}
             <p className="item-location">📍 {item.locationFound}</p>
             

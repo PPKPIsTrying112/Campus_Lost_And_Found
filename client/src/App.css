@@ -60,3 +60,68 @@ button:hover {
 .post small {
   color: #666;
 }
+
+/* For Filters */
+.filters-container {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 8px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.filter-group label {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.filter-group select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.filter-group select:hover {
+  border-color: #007bff;
+}
+
+.category-filter,
+.date-range-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.category-filter label,
+.date-range-filter label {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.category-filter select,
+.date-range-filter select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.category-filter select:hover,
+.date-range-filter select:hover {
+  border-color: #007bff;
+}

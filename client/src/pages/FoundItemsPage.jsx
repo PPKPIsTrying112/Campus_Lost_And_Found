@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../contexts/AuthContext.jsx';
+import { useNavigate } from 'react-router-dom';
 import CreateFoundItem from '../components/CreateFoundItem'
 import FoundItemsList from '../components/FoundItemsList'
 import CategoryFilter from '../components/CategoryFilter'
 import DateRangeFilter from '../components/DateRangeFilter'
 import '../App.css';
 
+
 function FoundItemsPage() {
   const [foundItems, setFoundItems] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedDateRange, setSelectedDateRange] = useState('');
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   // Fetch all found items when page loads
   useEffect(() => {
@@ -20,6 +25,12 @@ function FoundItemsPage() {
     const response = await fetch('/api/found-items');
     const data = await response.json();
     setFoundItems(data);
+  };
+
+  // Handle logout
+  const handleLogout = () => {
+    logout();           // clears user from AuthContext and localStorage
+    navigate("/");      // redirect to homepage
   };
 
   // Helper function to calculate date range based on selection
@@ -79,23 +90,37 @@ function FoundItemsPage() {
 
   return (
     <div className="App">
-      <h1>Found Items</h1>
+      {/* Header with user info and logout */}
+      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem' }}>
+        <h2>Found Items</h2>
+        {user && (
+          <div>
+            <span style={{ marginRight: '1rem' }}>Hello, {user.name || user.email}</span>
+            <button onClick={handleLogout}>Logout</button>
+          </div>
+        )}
+      </header>
       
       {/* Form to create new found item */}
       <CreateFoundItem onItemCreated={fetchFoundItems} />
       
-      {/* Category filter dropdown */}
-      <CategoryFilter 
-        selectedCategory={selectedCategory}
-        onCategoryChange={setSelectedCategory}
-      />
-      
-      {/* Date range filter dropdown */}
-      <DateRangeFilter 
-        selectedRange={selectedDateRange}
-        onRangeChange={setSelectedDateRange}
-      />
-      
+      <div className="filters-container">
+        {/* Category filter dropdown */}
+        <div className="filter-group">
+          <CategoryFilter 
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
+          />
+        </div>
+        
+        <div className="filter-group">
+          {/* Date range filter dropdown */}
+          <DateRangeFilter 
+            selectedRange={selectedDateRange}
+            onRangeChange={setSelectedDateRange}
+          />
+        </div>
+      </div>
       {/* Display filtered items as list */}
       <FoundItemsList foundItems={filteredItems} />
     </div>
