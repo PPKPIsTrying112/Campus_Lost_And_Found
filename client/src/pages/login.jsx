@@ -18,6 +18,7 @@ function Login() {
     setMsg(res.message);
 
     if (res.success) login(res.user);
+
   };
 
   return (

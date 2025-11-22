@@ -9,16 +9,20 @@ router.post("/signup", async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
-    // Hash the password
     const hashed = await bcrypt.hash(password, 10);
 
-    // Insert into DB
+    // Insert into DB with profileImage default NULL
     const stmt = db.prepare(
-      "INSERT INTO users (name, email, password) VALUES (?, ?, ?)"
+      "INSERT INTO users (name, email, password, profileImage) VALUES (?, ?, ?, ?)"
     );
-    stmt.run(name, email, hashed);
+    stmt.run(name, email, hashed, null);
 
-    res.json({ success: true, message: "Signup successful" });
+    // Return user info including profileImage
+    res.json({
+      success: true,
+      message: "Signup successful",
+      user: { id: this.lastID, name, email, profileImage: null }
+    });
   } catch (err) {
     res.status(400).json({ success: false, message: "Email already exists" });
   }
@@ -29,12 +33,23 @@ router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   const user = db.prepare("SELECT * FROM users WHERE email = ?").get(email);
-  if (!user) return res.status(400).json({ success: false, message: "User not found" });
+  if (!user)
+    return res.status(400).json({ success: false, message: "User not found" });
 
   const match = await bcrypt.compare(password, user.password);
-  if (!match) return res.status(400).json({ success: false, message: "Incorrect password" });
+  if (!match)
+    return res.status(400).json({ success: false, message: "Incorrect password" });
 
-  res.json({ success: true, message: "Login successful", user: { id: user.id, name: user.name, email: user.email } });
+  res.json({
+    success: true,
+    message: "Login successful",
+    user: {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      profileImage: user.profileImage || null,
+    },
+  });
 });
 
 module.exports = router;
