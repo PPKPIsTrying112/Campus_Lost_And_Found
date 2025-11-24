@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext.jsx';
 import { useNavigate } from 'react-router-dom';
-import CreateFoundItem from '../components/CreateFoundItem'
 import FoundItemsList from '../components/FoundItemsList'
 import CategoryFilter from '../components/CategoryFilter'
 import DateRangeFilter from '../components/DateRangeFilter'
@@ -92,7 +91,7 @@ function FoundItemsPage() {
     <div className="App">
       {/* Header with user info and logout */}
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem' }}>
-        <h2>Found Items</h2>
+    
         {user && (
           <div>
             <span style={{ marginRight: '1rem' }}>Hello, {user.name || user.email}</span>
@@ -101,9 +100,15 @@ function FoundItemsPage() {
         )}
       </header>
       
-      {/* Form to create new found item */}
-      <CreateFoundItem onItemCreated={fetchFoundItems} />
-      
+      {/* Navigation button to create found item */}
+      <button 
+        onClick={() => navigate("/create-found-item")}
+        style={{ marginBottom: '1rem', padding: '10px 20px' }}
+      >
+        Post Found Item
+      </button>
+
+      {/* Filters */}
       <div className="filters-container">
         {/* Category filter dropdown */}
         <div className="filter-group">

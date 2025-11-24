@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import PostPage from "./pages/PostPage";
 import FoundItemsPage from './pages/FoundItemsPage';
+import CreateFoundItemPage from './pages/CreateFoundItemPage';
 import Profile from "./pages/ProfilePage";
 import "./App.css";
 
@@ -19,8 +20,14 @@ function App() {
           {/* Homepage accessible to everyone */}
           <Route path="/" element={<Homepage />} />
           
-          {/* Found items page */}
+          {/* Found items list page */}
           <Route path="/found-items" element={<FoundItemsPage />} />
+          
+          {/* Create found item page - only for logged-in users */}
+          <Route
+            path="/create-found-item"
+            element={user ? <CreateFoundItemPage /> : <Navigate to="/login" />}
+          />
           
           {/* PostPage only for logged-in users */}
           <Route
