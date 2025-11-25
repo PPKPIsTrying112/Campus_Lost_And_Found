@@ -27,7 +27,7 @@ app.use("/api/profile-picture", profilePictureRouter);
 
 app.use('/uploads', express.static('uploads'));
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
