@@ -7,6 +7,7 @@
   background: white;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: box-shadow 0.3s;
+  cursor: pointer;
 }
 
 .item-card:hover {
@@ -57,4 +58,14 @@
   color: #999;
   margin: 5px 15px 15px;
   font-size: 13px;
+}
+
+.empty-state {
+  text-align: center;
+  color: #666;
+}
+
+.empty-state p {
+  margin: 8px 0;
+  font-size: 16px;
 }

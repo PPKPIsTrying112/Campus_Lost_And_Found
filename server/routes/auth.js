@@ -15,13 +15,14 @@ router.post("/signup", async (req, res) => {
     const stmt = db.prepare(
       "INSERT INTO users (name, email, password, profileImage) VALUES (?, ?, ?, ?)"
     );
-    stmt.run(name, email, hashed, null);
+
+    const result = stmt.run(name, email, hashed, null);
 
     // Return user info including profileImage
     res.json({
       success: true,
       message: "Signup successful",
-      user: { id: this.lastID, name, email, profileImage: null }
+      user: { id: result.lastInsertRowid, name, email, profileImage: null } 
     });
   } catch (err) {
     res.status(400).json({ success: false, message: "Email already exists" });

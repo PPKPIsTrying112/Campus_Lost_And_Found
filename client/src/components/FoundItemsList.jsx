@@ -1,10 +1,32 @@
 // components/FoundItemsList.jsx
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './FoundItemsList.css';
 
 
 function FoundItemsList({ foundItems }) {
+  //For navigation to "Individual Item" page 
+  const navigate = useNavigate(); 
+
+  const handleCardClick = (itemId) => {
+    navigate(`/found-items/${itemId}`)
+  }
+
+  // Empty state if there are no found items yet
+    if (!foundItems || foundItems.length === 0) {
+      return (
+        <div className="items-container">
+          <h2>All Found Items</h2>
+          <div className="empty-state">
+            <p>No items found yet.</p>
+            <p>Be the first to post a found item!</p>
+          </div>
+        </div>
+      );
+    }
+
   return (
+    
     <div className="items-container">
       <h2>All Found Items</h2>
       {/* {foundItems.map((item) => (
@@ -26,7 +48,9 @@ function FoundItemsList({ foundItems }) {
 
 
       {foundItems.map((item) => (
-        <div key={item.id} className="item-card">
+        <div key={item.id} className="item-card"
+          onClick={()=> handleCardClick(item.id)} //Navigation in action 
+        >
             {/* Image section */}
             {item.photo && <img src={`/uploads/found-items/${item.photo}`} alt={item.itemTitle} className="item-image" />}
             

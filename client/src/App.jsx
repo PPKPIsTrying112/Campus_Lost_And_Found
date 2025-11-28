@@ -1,10 +1,12 @@
 // src/App.jsx
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./contexts/AuthContext.jsx";
+
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import PostPage from "./pages/PostPage";
+import ItemDetailPage from './pages/ItemDetailPage';
 import FoundItemsPage from './pages/FoundItemsPage';
 import CreateFoundItemPage from './pages/CreateFoundItemPage';
 import Profile from "./pages/ProfilePage";
@@ -20,6 +22,9 @@ function App() {
           {/* Homepage accessible to everyone */}
           <Route path="/" element={<Homepage />} />
           
+          { /* Detailed Individual Item Page where user can navigate to claim */}
+          <Route path="/found-items/:id" element={<ItemDetailPage />} />
+
           {/* Found items list page */}
           <Route path="/found-items" element={<FoundItemsPage />} />
           

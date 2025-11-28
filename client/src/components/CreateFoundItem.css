@@ -1,0 +1,107 @@
+.form-container {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  margin: 40px auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 600px;
+  width: 90%;     
+}
+
+.form-container h2 {
+  color: #333;
+  font-size: 22px;
+  margin: 0 0 24px 0;
+  text-align: center;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-container label {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+.form-container input,
+.form-container textarea,
+.form-container select {
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-container input:focus,
+.form-container textarea:focus,
+.form-container select:focus {
+  outline: none;
+  border-color: #0088ff;
+}
+
+.form-container textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.form-container select {
+  background: white;
+  cursor: pointer;
+}
+
+.form-container input[type="file"] {
+  padding: 10px;
+  background: #f9f9f9;
+  border: 1px dashed #ccc;
+}
+
+/* Groupin label + input together */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Date and time side by side */
+.date-time-row {
+  display: flex;
+  gap: 12px;
+}
+
+.field-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Security questions grouped */
+.security-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-container button[type="submit"] {
+  padding: 14px 20px;
+  background: #0088ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.form-container button[type="submit"]:hover {
+  background: #0066cc;
+}

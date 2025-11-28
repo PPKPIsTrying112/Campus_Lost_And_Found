@@ -98,15 +98,18 @@ function FoundItemsPage() {
             <button onClick={handleLogout}>Logout</button>
           </div>
         )}
+
+         {/* Navigation button to create found item */}
+        <button 
+          onClick={() => navigate("/create-found-item")}
+          style={{ marginLeft: '1rem'}}
+        >
+          Post Found Item
+        </button>
+
       </header>
       
-      {/* Navigation button to create found item */}
-      <button 
-        onClick={() => navigate("/create-found-item")}
-        style={{ marginBottom: '1rem', padding: '10px 20px' }}
-      >
-        Post Found Item
-      </button>
+     
 
       {/* Filters */}
       <div className="filters-container">

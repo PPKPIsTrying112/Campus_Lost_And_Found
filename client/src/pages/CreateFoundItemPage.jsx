@@ -23,25 +23,25 @@ function CreateFoundItemPage() {
     <div className="App">
       {/* Header with user info and logout */}
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem' }}>
-        <h2>Post Found Item</h2>
         {user && (
           <div>
             <span style={{ marginRight: '1rem' }}>Hello, {user.name || user.email}</span>
             <button onClick={handleLogout}>Logout</button>
           </div>
         )}
+        {/* Navigation button back to list */}
+        <button 
+          onClick={() => navigate("/found-items")} 
+          style={{ marginLeft: '1rem'}}
+        >
+          View All Items
+        </button>
       </header>
       
       {/* Use existing CreateFoundItem component */}
       <CreateFoundItem onItemCreated={handleItemCreated} />
       
-      {/* Navigation button back to list */}
-      <button 
-        onClick={() => navigate("/found-items")} 
-        style={{ marginTop: '1rem', padding: '10px 20px' }}
-      >
-        View All Items
-      </button>
+      
     </div>
   );
 }

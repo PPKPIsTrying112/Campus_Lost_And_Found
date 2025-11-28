@@ -1,8 +1,9 @@
 import React from 'react';
+import './Filters.css'; 
 
 function DateRangeFilter({ selectedRange, onRangeChange }) {
   return (
-    <div className="date-range-filter">
+    <div className="filter-group"> 
       <label>Date Range</label>
       <select value={selectedRange} onChange={(e) => onRangeChange(e.target.value)}>
         <option value="">All Time</option>

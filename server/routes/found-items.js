@@ -5,13 +5,11 @@ const fs = require('fs');
 
 const router = express.Router();
 
-// Create uploads folder if it doesn't exist
 const uploadDir = path.join(__dirname, '../uploads/found-items');
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
 
-// Configure multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, uploadDir);
@@ -23,24 +21,47 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// GET all found items
+// GET all found items 
 router.get('/', (req, res) => {
-  const foundItems = req.db.prepare('SELECT * FROM found_items ORDER BY created_at DESC').all();
+  const foundItems = req.db.prepare(`
+    SELECT found_items.*, users.name as userName 
+    FROM found_items 
+    LEFT JOIN users ON found_items.user_id = users.id 
+    ORDER BY created_at DESC
+  `).all();
   res.json(foundItems);
 });
 
-// POST with file upload
+// GET single item by ID 
+router.get('/:id', (req, res) => {
+  const { id } = req.params;
+  
+  const item = req.db.prepare(`
+    SELECT found_items.*, users.name as userName 
+    FROM found_items 
+    LEFT JOIN users ON found_items.user_id = users.id 
+    WHERE found_items.id = ?
+  `).get(id);
+  
+  if (!item) {
+    return res.status(404).json({ error: 'Item not found' });
+  }
+  
+  res.json(item);
+});
+
+// POST with file upload 
 router.post('/', upload.single('photo'), (req, res) => {
-  const { itemTitle, description, category, locationFound, dateFound, timeFound, securityQuestion1, securityQuestion2, securityQuestion3 } = req.body;
+  const { itemTitle, description, category, locationFound, dateFound, timeFound, securityQuestion1, securityQuestion2, securityQuestion3, user_id } = req.body;
   
   const photoFileName = req.file ? req.file.filename : null;
   
   const insert = req.db.prepare(`
-    INSERT INTO found_items (itemTitle, description, category, locationFound, dateFound, timeFound, photo, securityQuestion1, securityQuestion2, securityQuestion3) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO found_items (user_id, itemTitle, description, category, locationFound, dateFound, timeFound, photo, securityQuestion1, securityQuestion2, securityQuestion3) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
   `);
   
-  const result = insert.run(itemTitle, description, category, locationFound, dateFound, timeFound, photoFileName, securityQuestion1, securityQuestion2, securityQuestion3);
+  const result = insert.run(user_id, itemTitle, description, category, locationFound, dateFound, timeFound, photoFileName, securityQuestion1, securityQuestion2, securityQuestion3);
   
   res.json({ id: result.lastInsertRowid, itemTitle, description });
 });

@@ -1,8 +1,9 @@
 import React from 'react';
+import './Filters.css';  
 
 function CategoryFilter({ selectedCategory, onCategoryChange }) {
   return (
-    <div className="category-filter">
+    <div className="filter-group"> 
       <label>Category</label>
       <select value={selectedCategory} onChange={(e) => onCategoryChange(e.target.value)}>
         <option value="">All Categories</option>
