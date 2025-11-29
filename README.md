@@ -39,11 +39,14 @@ cd ../client
 npm install
 ```
 
-3. **Run the application** (Alrdy configured to run frontend and backend at once)
+3. **Run the application** (Already configured to run frontend and backend at once)
 
 ```bash
 cd client
 npm run dev #vite wwill be in action
+cd ..
+cd server
+node index.js
 ```
 
 4. **Open your browser**
