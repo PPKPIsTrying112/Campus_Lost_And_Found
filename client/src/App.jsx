@@ -54,8 +54,14 @@ function App() {
 
           {/* Profile */}
           <Route
-            path="/profile"
+            path="/profile/:userId"
             element={user ? <Profile /> : <Navigate to="/login" />}
+          />
+
+          {/* Profile page for any user by ID */}
+          <Route
+            path="/profile/:userId"
+            element={<Profile />}
           />
         </Routes>
       </div>

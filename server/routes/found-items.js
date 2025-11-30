@@ -32,6 +32,21 @@ router.get('/', (req, res) => {
   res.json(foundItems);
 });
 
+// GET items by user_id (for profile pages)
+router.get('/user/:user_id', (req, res) => {
+  const { user_id } = req.params;
+
+  const userItems = req.db.prepare(`
+    SELECT found_items.*, users.name AS userName
+    FROM found_items
+    LEFT JOIN users ON found_items.user_id = users.id
+    WHERE found_items.user_id = ?
+    ORDER BY created_at DESC
+  `).all(user_id);
+
+  res.json(userItems);
+});
+
 // GET single item by ID 
 router.get('/:id', (req, res) => {
   const { id } = req.params;
