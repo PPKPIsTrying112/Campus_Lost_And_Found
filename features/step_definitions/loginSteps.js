@@ -10,7 +10,6 @@ const {
 const { chromium } = require('playwright');
 const assert = require('assert');
 
-// Increase timeout to 60 seconds (important)
 setDefaultTimeout(60 * 1000);
 
 Before({ tags: "@login" }, async function () {
@@ -46,4 +45,24 @@ Then('I should be redirected to the homepage', async function () {
 
   await page.waitForURL('http://localhost:5173/');
   assert.strictEqual(page.url(), 'http://localhost:5173/');
+});
+
+// ------------------ LOGOUT STEPS ------------------
+
+Given('I am logged in as {string} with password {string}', async function (email, password) {
+  await this.page.goto('http://localhost:5173/login');
+  await this.page.fill('input[name="email"]', email);
+  await this.page.fill('input[name="password"]', password);
+  await this.page.click('button:has-text("Login")');
+  await this.page.waitForURL('http://localhost:5173/');
+});
+
+When('I click the logout button', async function () {
+  await this.page.click('button:has-text("Logout")');
+});
+
+Then('I should be redirected to the initial homepage', async function () {
+  await this.page.waitForURL('http://localhost:5173/');
+  const content = await this.page.textContent('body');
+  assert(content.includes("Reconnect with your belongings"));
 });
