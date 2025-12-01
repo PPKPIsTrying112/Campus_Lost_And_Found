@@ -1,7 +1,6 @@
-@login
-
 Feature: Login
 
+  @login
   Scenario: User logs in successfully
     Given I have an account with email "test@gmail.com" and password "Password"
     When I enter my email "test@gmail.com" and password "Password"
