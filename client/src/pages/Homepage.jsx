@@ -48,7 +48,7 @@ function Homepage() {
           <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
             {/* Circular profile picture */}
             <div
-              onClick={() => navigate("/profile")}
+              onClick={() => navigate(`/profile/${user.id}`)}
               style={{
                 width: "50px",
                 height: "50px",
