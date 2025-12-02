@@ -67,6 +67,9 @@ npm install
 ### Tagnames listed in .feature files
 ```bash
 cd ./Campus_Lost_And_Found
-
 npx cucumber-js --tags "@tagname"
+```
+### In order to run Playwright for Cucumber Testing
+```bash
+npx playwright install
 ```
