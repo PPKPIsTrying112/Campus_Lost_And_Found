@@ -2,6 +2,8 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./contexts/AuthContext.jsx";
 
+import Navbar from './components/Navbar';
+
 import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -12,6 +14,7 @@ import CreateFoundItemPage from './pages/CreateFoundItemPage';
 import Profile from "./pages/ProfilePage";
 import MyClaimsPage from './pages/MyClaimsPage';
 import IncomingClaimsPage from './pages/IncomingClaimsPage';
+import ArchivePage from './pages/ArchivePage';
 
 import "./App.css";
 
@@ -20,6 +23,9 @@ function App() {
 
   return (
     <Router>
+
+      <Navbar />
+
       <div className="App">
         <Routes>
           {/* Homepage accessible to everyone */}
@@ -66,7 +72,9 @@ function App() {
 
           {/* Incoming requests (founder pov)*/}
           <Route path="/incoming-claims" element={<IncomingClaimsPage />} />
-
+          
+          {/* Found posts will go here (archive)*/}
+          <Route path="/archive" element={<ArchivePage />} />
         </Routes>
       </div>
     </Router>

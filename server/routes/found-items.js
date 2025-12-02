@@ -27,9 +27,22 @@ router.get('/', (req, res) => {
     SELECT found_items.*, users.name as userName 
     FROM found_items 
     LEFT JOIN users ON found_items.user_id = users.id 
+    WHERE found_items.status = 'available'
     ORDER BY created_at DESC
   `).all();
   res.json(foundItems);
+});
+
+// GET all claimed items (for archive page)
+router.get('/archive', (req, res) => {
+  const claimedItems = req.db.prepare(`
+    SELECT found_items.*, users.name as userName 
+    FROM found_items 
+    LEFT JOIN users ON found_items.user_id = users.id 
+    WHERE found_items.status = 'claimed'
+    ORDER BY created_at DESC
+  `).all();
+  res.json(claimedItems);
 });
 
 // GET single item by ID 

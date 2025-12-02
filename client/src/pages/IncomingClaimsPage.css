@@ -1,21 +1,19 @@
 .incoming-claims-page {
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 24px;
 }
 
 .incoming-claims-page h1 {
   margin: 0 0 8px 0;
   font-size: 24px;
+  text-align: left;
 }
 
 .page-subtitle {
   color: #666;
   margin-bottom: 24px;
-}
-
-.back-button {
-  margin-bottom: 20px;
+  text-align: left;
 }
 
 .empty-state {

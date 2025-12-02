@@ -37,12 +37,12 @@ db.exec(`
     securityQuestion1 TEXT NOT NULL,
     securityQuestion2 TEXT,
     securityQuestion3 TEXT,
+    status TEXT DEFAULT 'available',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
   )
 `);
 
-// Claims table 
 // Claims table
 db.exec(`
   CREATE TABLE IF NOT EXISTS claims (

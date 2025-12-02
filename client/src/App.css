@@ -56,3 +56,11 @@ form {
   flex-direction: column;
   gap: 10px;
 }
+
+.App {
+  padding-top: 70px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}

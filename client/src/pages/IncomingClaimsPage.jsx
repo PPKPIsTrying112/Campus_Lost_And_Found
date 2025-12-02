@@ -90,9 +90,6 @@ function IncomingClaimsPage() {
 
   return (
     <div className="incoming-claims-page">
-      <button className="back-button" onClick={() => navigate('/found-items')}>
-        ← Back to Home
-      </button>
 
       <h1>Incoming Claims</h1>
       <p className="page-subtitle">Review claims on items you've found</p>

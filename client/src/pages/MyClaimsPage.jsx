@@ -41,9 +41,9 @@ function MyClaimsPage() {
 
   const getStatusText = (status) => {
     switch (status) {
-      case 'approved': return 'Approved ✓';
-      case 'denied': return 'Denied ✗';
-      default: return 'Pending ⏳';
+      case 'approved': return 'Approved';
+      case 'denied': return 'Denied';
+      default: return 'Pending';
     }
   };
 
@@ -57,10 +57,7 @@ function MyClaimsPage() {
 
   return (
     <div className="claims-page">
-      <button className="back-button" onClick={() => navigate('/found-items')}>
-        ← Back to Home
-      </button>
-
+    
       <h1>My Claims</h1>
       <p className="page-subtitle">Track the status of items you've claimed</p>
 

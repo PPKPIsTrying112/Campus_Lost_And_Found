@@ -64,7 +64,19 @@ router.get('/incoming/:userId', (req, res) => {
 router.put('/:id/approve', (req, res) => {
   const { id } = req.params;
 
+  // Get the claim to find which item it's for
+  const claim = req.db.prepare('SELECT * FROM claims WHERE id = ?').get(id);
+  
+  if (!claim) {
+    return res.status(404).json({ error: 'Claim not found' });
+  }
+
+  // Update claim status to approved
   req.db.prepare('UPDATE claims SET status = ? WHERE id = ?').run('approved', id);
+  
+  // Update item status to claimed
+  req.db.prepare('UPDATE found_items SET status = ? WHERE id = ?').run('claimed', claim.item_id);
+
   res.json({ message: 'Claim approved!' });
 });
 

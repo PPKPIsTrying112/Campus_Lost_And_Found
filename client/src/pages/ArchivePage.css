@@ -1,0 +1,97 @@
+.archive-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.archive-page h1 {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  text-align: left;
+}
+
+.archive-page .page-subtitle {
+  color: #666;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.empty-state p {
+  color: #666;
+}
+
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.archive-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.archive-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.archive-content {
+  padding: 16px;
+}
+
+.archive-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+}
+
+.archive-description {
+  color: #666;
+  font-size: 14px;
+  margin: 0 0 12px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.archive-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.archive-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+.found-by {
+  font-size: 13px;
+  color: #666;
+}
+
+.claimed-badge {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
