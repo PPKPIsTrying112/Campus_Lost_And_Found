@@ -63,3 +63,10 @@ npm install
 cd ../client 
 npm install 
 ```
+### Running Cucumber Tests
+### Tagnames listed in .feature files
+```bash
+cd ./Campus_Lost_And_Found
+
+npx cucumber-js --tags "@tagname"
+```
