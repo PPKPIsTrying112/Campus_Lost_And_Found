@@ -10,6 +10,9 @@ import ItemDetailPage from './pages/ItemDetailPage';
 import FoundItemsPage from './pages/FoundItemsPage';
 import CreateFoundItemPage from './pages/CreateFoundItemPage';
 import Profile from "./pages/ProfilePage";
+import MyClaimsPage from './pages/MyClaimsPage';
+import IncomingClaimsPage from './pages/IncomingClaimsPage';
+
 import "./App.css";
 
 function App() {
@@ -57,6 +60,13 @@ function App() {
             path="/profile"
             element={user ? <Profile /> : <Navigate to="/login" />}
           />
+
+          {/* My Claims (claimer pov)*/}
+          <Route path="/my-claims" element={<MyClaimsPage />} />
+
+          {/* Incoming requests (founder pov)*/}
+          <Route path="/incoming-claims" element={<IncomingClaimsPage />} />
+
         </Routes>
       </div>
     </Router>

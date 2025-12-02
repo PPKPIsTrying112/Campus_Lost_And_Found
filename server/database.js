@@ -42,5 +42,21 @@ db.exec(`
   )
 `);
 
+// Claims table 
+// Claims table
+db.exec(`
+  CREATE TABLE IF NOT EXISTS claims (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    item_id INTEGER NOT NULL,
+    claimer_id INTEGER NOT NULL,
+    answer1 TEXT NOT NULL,
+    answer2 TEXT,
+    answer3 TEXT,
+    status TEXT DEFAULT 'pending',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (item_id) REFERENCES found_items(id),
+    FOREIGN KEY (claimer_id) REFERENCES users(id)
+  )
+`);
 
 module.exports = db;

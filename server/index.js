@@ -6,6 +6,7 @@ const postsRouter = require('./routes/posts');
 const authRouter = require('./routes/auth');
 const foundItemsRouter = require('./routes/found-items');
 const profilePictureRouter = require("./routes/profile-picture");
+const claimsRoutes = require('./routes/claims'); 
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use('/api/posts', postsRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/found-items', foundItemsRouter);
 app.use("/api/profile-picture", profilePictureRouter);
+app.use('/api/claims', claimsRoutes); 
 
 app.use('/uploads', express.static('uploads'));
 
