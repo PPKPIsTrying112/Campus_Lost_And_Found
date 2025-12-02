@@ -1,12 +1,23 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const db = require("../database");
+const { validatePassword, validateEmail } = require("../utils/validation");
 
 const router = express.Router();
 
 // SIGNUP
 router.post("/signup", async (req, res) => {
   const { name, email, password } = req.body;
+
+  // EMAIL VALIDATION
+  const emailErr = validateEmail(email);
+  if (emailErr)
+    return res.status(400).json({ success: false, message: emailErr });
+
+  // PASSWORD VALIDATION
+  const passErr = validatePassword(password);
+  if (passErr)
+    return res.status(400).json({ success: false, message: passErr });
 
   try {
     const hashed = await bcrypt.hash(password, 10);
@@ -16,16 +27,22 @@ router.post("/signup", async (req, res) => {
       "INSERT INTO users (name, email, password, profileImage) VALUES (?, ?, ?, ?)"
     );
 
-    const result = stmt.run(name, email, hashed, null);
+   const result = stmt.run(name, email, hashed, null);
 
-    // Return user info including profileImage
     res.json({
       success: true,
-      message: "Signup successful",
-      user: { id: result.lastInsertRowid, name, email, profileImage: null } 
+      message: "Account created",
+      user: {
+        id: result.lastInsertRowid,
+        name,
+        email,
+        profileImage: null
+      }
     });
   } catch (err) {
-    res.status(400).json({ success: false, message: "Email already exists" });
+    return res
+      .status(400)
+      .json({ success: false, message: "Email already exists" });
   }
 });
 

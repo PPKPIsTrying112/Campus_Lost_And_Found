@@ -9,6 +9,8 @@ const {
 
 const { chromium } = require('playwright');
 const assert = require('assert');
+const request = require('supertest');
+const app = require('../../server/index.js');
 
 setDefaultTimeout(60 * 1000);
 
@@ -23,9 +25,27 @@ After({ tags: "@login" }, async function () {
   }
 });
 
+
 Given('I have an account with email {string} and password {string}', async function (email, password) {
   this.testUser = { email, password };
+
+  // Try to create user via API
+  const res = await request(app)
+    .post('/api/auth/signup')
+    .send({
+      name: 'Test User',
+      email,
+      password
+    });
+
+  // If it fails because email exists, ignore
+  if (res.status === 400 && res.body.message === 'Email already exists') {
+    return;
+  } else if (res.status !== 200) {
+    throw new Error(`Failed to create test user: ${res.status} ${res.body.message}`);
+  }
 });
+
 
 When('I enter my email {string} and password {string}', async function (email, password) {
   const page = this.page;
@@ -50,11 +70,24 @@ Then('I should be redirected to the homepage', async function () {
 // ------------------ LOGOUT STEPS ------------------
 
 Given('I am logged in as {string} with password {string}', async function (email, password) {
+  const page = this.page;
+
+  // Ensure user exists
+  const res = await request(app)
+    .post('/api/auth/signup')
+    .send({ name: 'Test User', email, password });
+  
+  if (res.status === 400 && res.body.message !== 'Email already exists') {
+    throw new Error(`Failed to create test user: ${res.status} ${res.body.message}`);
+  }
+
   await this.page.goto('http://localhost:5173/login');
   await this.page.fill('input[name="email"]', email);
   await this.page.fill('input[name="password"]', password);
   await this.page.click('button:has-text("Login")');
-  await this.page.waitForURL('http://localhost:5173/');
+
+  // Wait for homepage element
+  await page.waitForSelector('text=Reconnect with your belongings', { timeout: 5000 });
 });
 
 When('I click the logout button', async function () {
