@@ -1,0 +1,164 @@
+.incoming-claims-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.incoming-claims-page h1 {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  text-align: left;
+}
+
+.page-subtitle {
+  color: #666;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.empty-state p {
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.claims-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.incoming-claim-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.claim-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.claim-item-info {
+  display: flex;
+  gap: 16px;
+}
+
+.claim-thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.claim-item-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+}
+
+.claimer-info {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.claim-date {
+  margin: 0;
+  font-size: 13px;
+  color: #888;
+}
+
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.status-badge.approved {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-badge.denied {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.answers-section {
+  background: #f9f9f9;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.answers-section h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.answer-item {
+  margin-bottom: 12px;
+}
+
+.answer-item:last-child {
+  margin-bottom: 0;
+}
+
+.answer-item .question {
+  display: block;
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 2px;
+}
+
+.answer-item .answer {
+  font-size: 14px;
+  color: #333;
+  font-style: italic;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.deny-btn {
+  padding: 10px 24px;
+  background: white;
+  border: 1px solid #c62828;
+  color: #c62828;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.deny-btn:hover {
+  background: #ffebee;
+}
+
+.approve-btn {
+  padding: 10px 24px;
+  background: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.approve-btn:hover {
+  background: #1b5e20;
+}
