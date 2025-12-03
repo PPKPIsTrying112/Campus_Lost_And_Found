@@ -5,9 +5,8 @@ import { useAuth } from "./contexts/AuthContext.jsx";
 import Navbar from './components/Navbar';
 
 import Homepage from "./pages/Homepage";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import PostPage from "./pages/PostPage";
+import Login from "./pages/login";
+import Signup from "./pages/signup";
 import ItemDetailPage from './pages/ItemDetailPage';
 import FoundItemsPage from './pages/FoundItemsPage';
 import CreateFoundItemPage from './pages/CreateFoundItemPage';
@@ -41,12 +40,6 @@ function App() {
           <Route
             path="/create-found-item"
             element={user ? <CreateFoundItemPage /> : <Navigate to="/login" />}
-          />
-          
-          {/* PostPage only for logged-in users */}
-          <Route
-            path="/postpage"
-            element={user ? <PostPage /> : <Navigate to="/login" />}
           />
 
           {/* Login */}
