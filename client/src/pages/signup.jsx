@@ -1,4 +1,3 @@
-// src/pages/Signup.jsx
 import { useState } from "react";
 import { apiPost } from "../api";
 import { useAuth } from "../contexts/AuthContext.jsx";

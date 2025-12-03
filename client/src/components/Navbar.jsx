@@ -4,6 +4,10 @@ import { useAuth } from '../contexts/AuthContext';
 import './Navbar.css';
 
 function Navbar() {
+
+  const defaultProfileImage =
+    "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png";
+
   // Get logged-in user info and logout function from AuthContext
   const { user, logout } = useAuth();
   
