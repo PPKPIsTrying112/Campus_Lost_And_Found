@@ -65,7 +65,9 @@ router.get('/:id', (req, res) => {
   const { id } = req.params;
   
   const item = req.db.prepare(`
-    SELECT found_items.*, users.name as userName 
+    SELECT found_items.*, 
+          users.name AS userName,
+          users.profileImage AS userProfilePic
     FROM found_items 
     LEFT JOIN users ON found_items.user_id = users.id 
     WHERE found_items.id = ?

@@ -4,7 +4,7 @@ const router = express.Router();
 // GET single user by ID
 router.get('/:id', (req, res) => {
   const user = req.db.prepare(`
-    SELECT id, name, email 
+    SELECT id, name, email, profileImage
     FROM users 
     WHERE id = ?
   `).get(req.params.id);

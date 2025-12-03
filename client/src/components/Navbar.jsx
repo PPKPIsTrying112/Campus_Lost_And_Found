@@ -84,7 +84,24 @@ function Navbar() {
         {/* If not logged in: show login button */}
         {user ? (
           <>
-            <span className="welcome-text">Hello, {user.name}</span>
+            { /* Profile Picture - quick access to your profile */ }
+            <div
+              onClick={() => navigate(`/profile/${user.id}`)}
+              style={{
+                width: "40px",
+                height: "40px",
+                borderRadius: "50%",
+                overflow: "hidden",
+                cursor: "pointer",
+                border: "2px solid #ccc",
+              }}
+            >
+              <img
+                src={user.profileImage || defaultProfileImage}
+                alt="Profile"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
             
             {/* Post Item button - quick access to create new found item */}
             <button 
@@ -103,13 +120,21 @@ function Navbar() {
             </button>
           </>
         ) : (
-          /* Not logged in - show Login button */
-          <button 
-            className="nav-btn login-btn" 
-            onClick={() => navigate('/login')}
-          >
-            Login
-          </button>
+          <>
+            {/* Not logged in - show Login and Sign up buttons */}
+            <button 
+              className="nav-btn login-btn" 
+              onClick={() => navigate('/login')}
+            >
+              Login
+            </button>
+            <button 
+              className="nav-btn signup-btn" 
+              onClick={() => navigate('/signup')}
+            >
+              Sign-Up
+            </button>
+          </>
         )}
       </div>
     </nav>

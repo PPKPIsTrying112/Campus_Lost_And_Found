@@ -38,35 +38,15 @@ function Homepage() {
         {/* Logged OUT: show login/signup */}
         {!user && (
           <div style={{ display: "flex", gap: "1rem" }}>
-            <button onClick={() => navigate("/login")}>Login</button>
-            <button onClick={() => navigate("/signup")}>Sign Up</button>
+            <button onClick={() => navigate("/signup")}>Get Started</button>
           </div>
         )}
 
         {/* Logged IN: show circular profile + logout + post */}
         {user && (
           <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-            {/* Circular profile picture */}
-            <div
-              onClick={() => navigate(`/profile/${user.id}`)}
-              style={{
-                width: "50px",
-                height: "50px",
-                borderRadius: "50%",
-                overflow: "hidden",
-                cursor: "pointer",
-                border: "2px solid #ccc",
-              }}
-            >
-              <img
-                src={user.profileImage || defaultProfileImage}
-                alt="Profile"
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
-            </div>
-
-            <button onClick={logout}>Logout</button>
-            <button onClick={() => navigate("/found-items")}>Post</button>
+            <button onClick={() => navigate("/found-items")}>Looking for an Item?</button>
+            <button onClick={() => navigate('/create-found-item')}>Found an Item?</button>
           </div>
         )}
 

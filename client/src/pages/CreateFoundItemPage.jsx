@@ -23,12 +23,6 @@ function CreateFoundItemPage() {
     <div className="App">
       {/* Header with user info and logout */}
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem' }}>
-        {user && (
-          <div>
-            <span style={{ marginRight: '1rem' }}>Hello, {user.name || user.email}</span>
-            <button onClick={handleLogout}>Logout</button>
-          </div>
-        )}
         {/* Navigation button back to list */}
         <button 
           onClick={() => navigate("/found-items")} 
