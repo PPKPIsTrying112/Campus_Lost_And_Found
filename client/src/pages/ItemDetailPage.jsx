@@ -96,14 +96,36 @@ function ItemDetailPage() {
             {/* Found By */}
             <div className="sidebar-card">
               <h3>Found By</h3>
-              <div className="finder-info">
-                <div className="finder-avatar">
-                  {item.userName ? item.userName.charAt(0).toUpperCase() : 'U'}
+              {item.user_id ? (
+                <div
+                  className="finder-info"
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => navigate(`/profile/${item.user_id}`)}
+                >
+                  <div className="finder-avatar">
+                    {item.userProfilePic ? (
+                      <img
+                        src={item.userProfilePic}  
+                        alt="Profile"
+                        className="finder-avatar-img"
+                      />
+                    ) : (
+                      <span>{item.userName ? item.userName[0].toUpperCase() : 'U'}</span>
+                    )}
+                  </div>
+
+                  <div>
+                    <p className="finder-name">{item.userName || 'User'}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="finder-name">{item.userName || 'Unknown User'}</p>
+              ) : (
+                <div className="finder-info">
+                  <div className="finder-avatar">U</div>
+                  <div>
+                    <p className="finder-name">User</p>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             {/* Claim Card */}
