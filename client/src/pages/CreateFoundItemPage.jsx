@@ -21,7 +21,6 @@ function CreateFoundItemPage() {
 
   return (
     <div className="App">
-      {/* Header with user info and logout */}
       <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem' }}>
         {/* Navigation button back to list */}
         <button 
