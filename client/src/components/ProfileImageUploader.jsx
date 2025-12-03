@@ -36,14 +36,12 @@ function ProfileImageUploader({ image }) {
       <div
         onClick={() => fileInputRef.current.click()}
         style={{
-          width: "140px",
-          height: "140px",
+          width: "120px",
+          height: "120px",
           borderRadius: "50%",
           overflow: "hidden",
-          border: "3px solid #ccc",
-          cursor: "pointer",
           margin: "0 auto 1rem",
-          transition: "0.2s",
+          border: "2px solid #ddd"
         }}
         onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
         onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
