@@ -4,6 +4,8 @@
   "private": true,
 
   "scripts": {
+    "test:signupTest": "node tests/run-signupTest.js",
+    "test:loginTest": "node tests/run-loginTest.js",
     "test:postTest": "node tests/run-postTest.js",
     "test:postTest:headed": "PWDEBUG=1 node tests/run-postTest.js"
   },
