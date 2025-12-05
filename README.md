@@ -63,14 +63,9 @@ npm install
 cd ../client 
 npm install 
 ```
-### Running Cucumber Tests
-**Tagnames listed in .feature files**
+**In order to run Tests with Cucumber and Playwright**
 ```bash
-cd ./Campus_Lost_And_Found
-npx cucumber-js --tags "@tagname"
-```
-**In order to run Playwright for Cucumber Testing**
-```bash
+npm install --save dev @cucumber/cucumber
 npx playwright install
 ```
 ### Running End to End Tests
