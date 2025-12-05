@@ -96,4 +96,46 @@ router.post('/', upload.single('photo'), (req, res) => {
   res.json({ id: result.lastInsertRowid, itemTitle, description });
 });
 
+//UPDATE route for Editing feature:
+router.put('/:id', (req, res) => {
+  const { id } = req.params;
+  //Can update everything EXCEPT photos
+  const { itemTitle, description, category, locationFound, dateFound, timeFound,
+    securityQuestion1, securityQuestion2, securityQuestion3
+  } = req.body;
+
+  const userId = req.user.id;
+
+  const item = req.db.prepare(`SELECT * FROM found_items WHERE id = ?`).get(id);
+
+      if (!item) {
+    return res.status(404).json({ error: 'Item not found' });
+  }
+
+  if (item.user_id !== userId) {
+    return res.status(403).json({ error: 'Not authorized to edit this item' });
+  }
+
+  // Update the post
+  req.db.prepare(`
+    UPDATE found_items
+    SET itemTitle = ?, description = ?, category = ?, locationFound = ?, dateFound = ?, timeFound = ?, 
+        securityQuestion1 = ?, securityQuestion2 = ?, securityQuestion3 = ?
+    WHERE id = ?
+  `).run(
+    itemTitle,
+    description,
+    category,
+    locationFound,
+    dateFound,
+    timeFound,
+    securityQuestion1,
+    securityQuestion2,
+    securityQuestion3,
+    id
+  );
+
+  res.json({ success: true });
+});
+
 module.exports = router;
