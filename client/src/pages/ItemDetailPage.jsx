@@ -59,18 +59,19 @@ const handleSubmit = async (e) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(item),
       });
-          if (res.ok) {
-      setEditing(false);
-      // re-fetch, handles stale data
-      const updated = await fetch(`/api/found-items/${id}`).then(r => r.json());
-          setItem(updated);
-        } 
-      else {
+    if (!res.ok) {
       console.error('Error updating item:', await res.text());
+      return;
     }
-    } catch (error) {
-      console.error('Error updating item:', error);
-    }
+    setEditing(false);
+      //refresh
+    const updated = await fetch(`/api/found-items/${id}`).then((r) => r.json());
+    setItem(updated);
+
+  } catch (error) {
+    console.error('Error updating item:', error);
+  }
+
   };
 
 
@@ -94,7 +95,7 @@ return (
 
             <div className="detail-content">
               {editing ? (
-                // --- EDIT FORM ---
+                //  EDIT buttons
                 <form onSubmit={handleSubmit}>
                   <label>Title:</label>
                   <input
@@ -129,12 +130,11 @@ return (
                   />
 
                   <div className="edit-buttons">
-                    <button type="submit">Save Changes</button>
-                    <button type="button" onClick={() => setEditing(false)}>Cancel</button>
+                    <button type="button" onClick={() => setEditing(false)}>Save changes</button>
                   </div>
                 </form>
               ) : (
-                // --- VIEW MODE ---
+
                 <>
                   <h1 className="detail-title">{item.itemTitle}</h1>
 
