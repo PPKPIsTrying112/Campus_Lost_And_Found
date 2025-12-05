@@ -43,7 +43,7 @@ npm install
 
 ```bash
 cd client
-npm run dev #vite wwill be in action
+npm run dev #vite will be in action
 cd ..
 cd server
 node index.js
@@ -64,21 +64,21 @@ cd ../client
 npm install 
 ```
 ### Running Cucumber Tests
-### Tagnames listed in .feature files
+**Tagnames listed in .feature files**
 ```bash
 cd ./Campus_Lost_And_Found
 npx cucumber-js --tags "@tagname"
 ```
-### In order to run Playwright for Cucumber Testing
+**In order to run Playwright for Cucumber Testing**
 ```bash
 npx playwright install
 ```
 ### Running End to End Tests
-### Relies on Cucumber and Playwright
+**Relies on Cucumber and Playwright**
 ```bash
 cd ./Campus_Lost_And_Found
 cd client
-npm run dev #vite wwill be in action
+npm run dev 
 ```
 
 1. **Open another bash terminal**
@@ -86,7 +86,7 @@ npm run dev #vite wwill be in action
 cd ./Campus_Lost_And_Found
 cd server
 node index.js
-
+```
 
 2. **Open another bash terminal**
 ```bash
@@ -103,3 +103,6 @@ npm run test:postTest
 ```bash
 npm run test:claimTest
 ```
+
+### Diagrams
+![Entity Relationship Diagram and Component Diagram for Project](diagram.svg)
