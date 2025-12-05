@@ -73,3 +73,33 @@ npx cucumber-js --tags "@tagname"
 ```bash
 npx playwright install
 ```
+### Running End to End Tests
+### Relies on Cucumber and Playwright
+```bash
+cd ./Campus_Lost_And_Found
+cd client
+npm run dev #vite wwill be in action
+```
+
+1. **Open another bash terminal**
+```bash
+cd ./Campus_Lost_And_Found
+cd server
+node index.js
+
+
+2. **Open another bash terminal**
+```bash
+cd ./Campus_Lost_And_Found
+```
+
+3. **first test: Logs in, creates a post, Logs out**
+```bash
+npm run test:postTest
+```
+
+4. **second test: Logs in, tries to claim post, gets hit with claim error, Logs out**
+- IMPORTANT ASSUMPTION: only works as intended when first post is already claimed by user
+```bash
+npm run test:claimTest
+```

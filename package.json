@@ -2,7 +2,9 @@
   "name": "lost-and-found",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
+    "test:claimTest": "node tests/run-endToendClaimTest.js",
     "test:signupTest": "node tests/run-signupTest.js",
     "test:loginTest": "node tests/run-loginTest.js",
     "test:postTest": "node tests/run-postTest.js",

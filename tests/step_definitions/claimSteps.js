@@ -1,5 +1,4 @@
 import { Given, When, Then } from '@cucumber/cucumber';
-import { expect } from '@playwright/test';
 
 Given('I am on the homepage', async function () {
   await this.page.goto('http://localhost:5173');
