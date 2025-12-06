@@ -94,10 +94,38 @@ npm run test:postTest
 ```
 
 4. **second test: Logs in, tries to claim post, gets hit with claim error, Logs out**
-- IMPORTANT ASSUMPTION: only works as intended when first post is already claimed by user
+- IMPORTANT ASSUMPTIONS: only works as intended when first post is already claimed by user
+and the posts have 3 security questions
 ```bash
 npm run test:claimTest
 ```
 
 ### Diagrams
 ![Entity Relationship Diagram and Component Diagram for Project](diagram.svg)
+
+Our component diagram shows the REST API calls between the client and the server. The diagram also shows how the server interacts with the database and our local filesystem storage through the assumptions our database makes about our storage systems.
+
+Our entity relationship diagram shows how the user, found items, and claims interact with each other. Our diagram shows the aspects each of our main topics should have, as well as the relations each topic has with each other including cardinality and the type of relation they have with each other.
+
+### 3 Distinct Features of Our App
+1. Claims
+
+In our app, users are able to claim lost items posted by other users. While claiming, the users will have to answer the three security questions made by the finder.
+
+On the finder's end, the user is able to access these claims and see the supposed owner's answers to the security questions and decide whether to approve or deny the claim.
+
+If approved, the post will be moved to the archive page. If denied, the post will stay in the found items page.
+
+
+2. Posting and viewing details of items
+
+In our app, users are able to post lost items they found. To post an item, users will need to fill out a form detailing the item description, the location it was found, the date it was found, as well as 3 security questions that only a owner of the item would know (i.e the contents of a wallet or the background of a phone screen)
+
+Once an item is posted, these item details can be found in the item's specific item details page, which is accessible by clicking the individual item boxes on the main found items page. 
+
+3. Profile page and its features
+
+In our app, users are able to view their own profile as well as other user profiles. Profiles display the user profile picture, name, email, and posts.
+
+Users can change their own profile picture by clicking their icon on the profile page, where they can upload local files on their computer with instant uploads and changes to their picture. 
+
